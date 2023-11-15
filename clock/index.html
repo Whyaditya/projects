@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport " content="width=device-width, initial-scale=1.0">
+    <title>simple clock</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="s.css">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="clockcontainer">
+                    <div id="hour"></div>
+                    <div id="min"></div>
+                    <div id="sec"></div>
+                </div>
+            </div>
+
+        </div>
+        <hr>
+
+        <div class="row justify-content-evenly text-center">
+
+            <div class="col-lg-12 form-check form-switch" id="cont">
+
+                <span id="ct"></span> <br>
+
+
+                <input type="number" min="1" max="24" id="ho"> : <input type="number" min="0" max="60" id="mi">
+                <button id="bt" onclick="add()">add alarm</button>
+
+
+                <div class="row ">
+                    <div class="col-lg-12 ">
+                        <!-- <li class="form-check form-switch" id="first"></li> -->
+                        <p>all your prev alarm</p> <br>
+                        <label for="a" id="first"> </label>
+                        <!-- <input type='checkbox' class="form-check-input" role="switch" name="onoff" id="onof"> -->
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        setAlarmBtn = document.querySelector("input");
+        let alarm1, alarm2, alarm3, isalarmset;
+
+
+
+
+        setInterval(() => {
+            d = new Date();
+            htime = d.getHours();
+            mtime = d.getMinutes();
+            stime = d.getSeconds();
+            hrotation = 30 * htime + mtime / 2;
+            mrotation = 6 * mtime;
+            srotation = 6 * stime;
+
+            hour.style.transform = `rotate(${hrotation}deg)`;
+            min.style.transform = `rotate(${mrotation}deg)`;
+            sec.style.transform = `rotate(${srotation}deg)`;
+        }, 1000);
+
+
+
+
+        setInterval(() => {
+            let da = new Date();
+            ht = da.getHours();
+            let mt = 0;
+            if (da.getMinutes() < 10) {
+                mt = `0${da.getMinutes()}`;
+            } else {
+                mt = da.getMinutes();
+            };
+            st = da.getSeconds();
+
+            document.getElementById('ct').innerHTML = `${ht}:${mt}:${st}`;
+
+
+
+            if (alarm1 === `${ht}:${mt}`) {
+                alert("wake up");
+            }; 
+            if (alarm2 === `${ht}:${mt}`)
+             {
+                alert("wake up");
+            }; 
+            if (alarm3 === `${ht}:${mt}`)
+            {
+                alert("wake up");
+            };
+
+
+
+        }, 1000);
+
+
+
+
+        let aaaa = 0;
+        let maxnum = 1;
+        let idd = 1;
+        let al = 0;
+        let ai1,ai2,ai3 = false;
+
+        function add() {
+
+
+
+            if (maxnum <= 3) {
+                let ha = Number(document.getElementById('ho').value);
+                let ma = 0;
+                if (Number(document.getElementById('mi').value) < 10) {
+                    ma = `0${Number(document.getElementById('mi').value)}`;
+                } else {
+                    ma = Number(document.getElementById('mi').value);
+                };
+
+
+                if (aaaa == 0) {
+                    const l1 = document.getElementById('first');
+                    // let html = "<li id=\'af'></li><br>";
+                    let html = "<label id=\'af'></label> <br>"
+                    l1.insertAdjacentHTML("afterend", html);
+                    document.getElementById('af').innerHTML = `${ha}:${ma}`;
+
+                    let html2 = "<input type='checkbox' class='form-check-input' role='switch'  id='onoff' checked>";
+                    const l2 = document.getElementById('af');
+                    l2.insertAdjacentHTML("beforeend", html2);
+
+                    aaaa += 1;
+
+                } else {
+                    const l1 = document.getElementById('first');
+                    // let html = "<li id=\'ag'></li><br>";
+                    let html = "<label id=\'ag'></label> <br>"
+                    l1.insertAdjacentHTML("afterend", html);
+                    document.getElementById('ag').innerHTML = `${ha}:${ma}`;
+
+
+                    let html2 = "<input type='checkbox' class='form-check-input' role='switch'  id='onoff2' checked>";
+                    const l2 = document.getElementById('ag');
+                    l2.insertAdjacentHTML("beforeend", html2);
+
+                    // id to target 
+                    document.getElementById("ag").id = `af${idd}`;
+                    document.getElementById("onoff2").id = `of${idd}`;
+                    idd += 1;
+
+                }
+
+                let time = `${ha}:${ma}`;
+
+                if (al == 0) {
+                    alarm1 = time;
+                    ai1 = true;
+                    al += 1;
+                }else if (al == 1) {
+                    alarm2 = time;
+                    ai2 = true;
+                    al += 1;
+                } else {
+                    alarm3 = time;
+                    ai3 = true;
+                }
+                maxnum += 1;
+
+            } else {
+                alert('stop');
+            }
+
+        }
+
+
+        function verify(){
+            if(ai1){
+                alarm1 = 0;
+            }else{
+
+            }
+            if(ai2){
+                alarm2 = 0;
+            }else{
+
+            }
+            if(ai3){
+                alarm3 = 0;
+            }else{
+
+            }
+        }
+
+        setAlarmBtn.addEventListener("click", verify);
+
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

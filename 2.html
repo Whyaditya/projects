@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #first{
+            list-style-type: upper-alpha;
+        }
+        #second{
+            list-style-type: circle;
+            list-style-image: url(/im.jpeg);
+            /* list-style-position: inside; */
+            list-style-position: inside;
+
+        }
+
+       
+    </style>
+</head>
+<body>
+    <iframe src="" frameborder="0"></iframe>
+
+    <div id="first">
+        <ol>
+            <li>1st item</li>
+            <li>2nd item</li>
+            <li>3rd item</li>
+        </ol>
+    </div>    
+    <div id="second">
+        <ul type="square">
+            <li>apple</li>
+            <li>samsung</li>
+            <li>realme</li>
+        </ul>
+    </div>
+
+    <br>
+
+    <div id="second">
+        <form action="file name">
+            <label for="nam">enter your name :</label>
+            <input type="text" placeholder="name" id="nam" >
+            <br/>
+            <label for="dob">enter DOB :
+            <input type="date" id="dob">
+            </label>
+            <br/>
+            <label>
+            chose your gender : male <input type="radio" name="gender"> female <input type="radio" name="gender">
+            </label>
+            <br>
+            <label for="course">which course:</label>
+                <select name="mycourse" id="course">
+                    <option value="java">java</option>
+                    <option value="python">python</option>
+                    <option value="javas">javascript</option>
+                </select>
+            <div id="ss">
+                <input type="submit" id="sub" placeholder="submit">
+            </div>    
+        </form>
+    </div>
+</body>
+</html>

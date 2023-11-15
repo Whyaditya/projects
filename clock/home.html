@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="cl.css">
+</head>
+
+<body>
+    <div>
+
+        <div id="clockcontainer">
+            <div id="hour"></div>
+            <div id="min"></div>
+            <div id="sec"></div>
+        </div>
+
+        <hr>
+
+        <div id="cont">
+
+                <span id="ct"></span> <br>
+
+                <input type="number" min="1" max="24" id="ho"> : <input type="number" min="0" max="60" id="mi">
+                <button id="bt" onclick="add()">add alarm</button>
+
+
+                <div class="listc">
+    
+                    <p>all your alarms</p> <br>
+                    <ul>
+                        <li class="checked">1 alarm</li>
+                        <li>2 alarm</li>
+                        <li>3 alarm</li>
+                    </ul>
+                    
+                </div>
+
+        </div>
+    </div>
+
+    
+    <script src="clock.js"></script>
+</body>
+
+</html>

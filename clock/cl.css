@@ -1,0 +1,73 @@
+body {
+    height: 100vw;
+    background-image: linear-gradient(to bottom right, #1FA0FF, #12DAFB, #A7FDCC);
+    background-repeat: no-repeat;
+    overflow: hidden;
+    
+
+}
+
+#clockcontainer {
+    /* to center the div   */
+    margin: auto;
+    /* here vw veiw part arrange itself according to the screen  */
+    height: 20vw;
+    width: 20vw;
+
+    background: url(c2.png) no-repeat;
+    /* to make our img fit properly inside the box  */
+    background-size: 100%;
+    /* to make our inside div relative to outer to make it responsive */
+    position: relative;
+}
+
+#hour,
+#min,
+#sec {
+    /* by position absolute we can change the position as we want  */
+    position: absolute;
+    background: black;
+    border-radius: 10px;
+    transform-origin: bottom;
+}
+
+#hour {
+    width: 2%;
+    height: 22%;
+    top: 28.5%;
+    left: 49%;
+
+}
+
+#min {
+    width: 2%;
+    height: 30%;
+    top: 20.5%;
+    left: 49%;
+    opacity: 0.8;
+}
+
+#sec {
+    width: 2%;
+    height: 25%;
+    top: 25.6%;
+    left: 49%;
+    background-color: red;
+    opacity: 0.8;
+}
+
+
+
+
+
+#cont{
+    margin: auto;
+    width: 50vw;
+    height: 50vh;
+    background-color: azure;
+    border-radius: 100px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    position: relative;
+    text-align: center;
+    
+}
