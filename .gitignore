@@ -2,3 +2,5 @@
 bootstrap/
 node_modules/
 weather/
+extra/
+weather app/
