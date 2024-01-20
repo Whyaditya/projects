@@ -23,7 +23,7 @@ const Carousel = () => {
             <div className="carousel-inner">
 
                 {dataFetched && carList.map(data => (<LoadingCarousel/>))}
-                {console.log(carList)}
+               
                 {!dataFetched && carList.map((data) => (<CarouselCard img={data.backdrop_path} title={data.title} release_date={data.release_date}/>))}
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">

@@ -23,7 +23,7 @@ const Trending = () => {
 
     return (
         <div class="container px-4 py-5 " id="custom-cards">
-            <h2 class="pb-2 border-bottom trending">Trending movie</h2>
+            <h2 class="pb-2 border-bottom trending text-light">Trending Movie</h2>
 
             <div class="row row-cols-1 row-cols-lg-4 align-items-stretch g-4 py-5">
 
@@ -37,7 +37,7 @@ const Trending = () => {
                 {/* {console.log(movieList)} */}
 
             </div>
-            <Link to="/movies" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">show more</Link>
+            <Link to="/movies" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">show more</Link>
 
         </div>
     );

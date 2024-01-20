@@ -8,17 +8,17 @@ const PeopleList = () => {
     let { peopleList, dataFetched } = useContext(MovieStore);
 
     // Use slice to get the first three elements
-    const firstThreePeople = peopleList.slice(0, 4);
+    const firstThreePeople = peopleList.slice(0, 3);
 
     return (
         <div class="container px-4 py-5 " id="custom-cards">
-            <h2 class="pb-2  trending">Actors & Actress</h2>
+            <h2 class="pb-2  trending text-light">Actors & Actress</h2>
 
-            <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            <div class="row row-cols-1 row-cols-lg-4 align-items-stretch g-4 py-5">
                 {dataFetched && <LoadingSpinner />}
                 {!dataFetched && firstThreePeople.map((data) => <People key={data.id} {...data} />)}
             </div>
-            <a href="#" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover ms-5">show more</a>
+            <a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover ms-5">show more</a>
 
         </div>
     );

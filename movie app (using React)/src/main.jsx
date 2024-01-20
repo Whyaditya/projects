@@ -11,6 +11,7 @@ import TrendingShows from './components/TrendingShows';
 import Hero from './components/Hero';
 import PeopleList from './components/PeopleList';
 import Login from './components/Login'
+import SearchPage from './components/SearchPage'
 
 
 const router = createBrowserRouter([
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
       {path:'/series',element: <TrendingShows />, },
       {path:'/login',element: <Login/>, },
       {path:'/signup',element: <Login/>, },
+      {path:'/search',element: <SearchPage/>, },
 
 
     ]

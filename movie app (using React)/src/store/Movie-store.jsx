@@ -1,4 +1,5 @@
 import { createContext, useEffect, useReducer, useState} from "react";
+import { redirect, useNavigate } from "react-router-dom";
 
 
 export const MovieStore = createContext({
@@ -6,7 +7,9 @@ export const MovieStore = createContext({
     dataFetched : true,
     tvList : [],
     carList: [],
-    peopleList:[]
+    peopleList:[],
+    searchList:[],
+    handleSearch:()=>{}
 })
 
 
@@ -26,6 +29,7 @@ const MovieStoreProvider = ({children})=>{
    let [tvList,setTvList] = useState([]);
    let [carList,setCarList] = useState([]);
    let [peopleList,setPeopleList] = useState([]);
+   let [searchList,setSearchList] = useState([]);
 
    const [dataFetched, setDataFetched] = useState(true);
 
@@ -62,6 +66,7 @@ const MovieStoreProvider = ({children})=>{
 
 
    const apiDataMovie = ()=>{
+    setDataFetched(true);
     fetch(url+`${pop}`,options)
     .then(res=>res.json())
     .then((data)=>{
@@ -72,6 +77,7 @@ const MovieStoreProvider = ({children})=>{
    }
 
    const apiDataTv = ()=>{
+    setDataFetched(true);
     fetch(url+`${pop_tv}`,options)
     .then(res=>res.json())
     .then((data)=>{
@@ -82,6 +88,7 @@ const MovieStoreProvider = ({children})=>{
    }
 
    const apiDatacar = () => {
+    setDataFetched(true);
     fetch(url + `${carousel}`, options)
         .then(res => res.json())
         .then((data) => {
@@ -95,6 +102,7 @@ const MovieStoreProvider = ({children})=>{
     };
 
     const apiDataPeople = ()=>{
+        setDataFetched(true);
         fetch(url+`${people}`,options)
         .then(res=>res.json())
         .then((data)=>{
@@ -103,12 +111,32 @@ const MovieStoreProvider = ({children})=>{
         })
         setDataFetched(false)
        }
-    
+
+    //    https://api.themoviedb.org/3/search/movie?query=batman&include_adult=false&language=en-US&page=1
+
+    const navigate = useNavigate();
+       
+    const handleSearch = (event)=>{
+        if(event.key === "Enter"){
+            setDataFetched(true);
+            navigate('/search');
+            
+            fetch(url+`/search/movie?query=${event.target.value}`,options)
+            .then(res=>res.json())
+            .then((data)=>{
+                setSearchList(data.results)
+                console.log(data.results)
+            })
+            setDataFetched(false)
+
+
+        }
+    }   
 
 
 
     return(
-        <MovieStore.Provider value={{movieList,dataFetched,tvList,carList,peopleList}}>
+        <MovieStore.Provider value={{movieList,dataFetched,tvList,carList,peopleList,searchList,handleSearch}}>
             {children}
         </MovieStore.Provider>
     );

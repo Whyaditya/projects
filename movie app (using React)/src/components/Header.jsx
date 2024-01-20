@@ -1,9 +1,15 @@
+import { useContext, useRef } from "react";
 import { BiCameraMovie } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { MovieStore } from "../store/Movie-store";
 
 
 
 const Header = ()=>{
+
+   let{handleSearch}= useContext(MovieStore);
+
+
     return(
         <header className="p-3 text-bg-dark">
     <div className="container">
@@ -19,8 +25,8 @@ const Header = ()=>{
           <li><Link to="/about" className="nav-link px-2 text-white">About</Link></li>
         </ul>
 
-        <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-          <input type="search" className="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search"/>
+        <form className="col-10 col-lg-auto mb-3 mb-lg-0 me-lg-3"  role="search" onSubmit={(event)=>{ event.preventDefault();}}>
+          <input type="search" onKeyDown={handleSearch}  className="form-control form-control-dark text-bg-light" onke placeholder="Search..." aria-label="Search"/> 
         </form>
 
         <div className="text-end">
